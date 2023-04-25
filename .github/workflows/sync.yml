@@ -36,4 +36,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh pr create -t "Synchronize upstream" -b "Merge $UPSTREAM_UPDATES to master" -B master -H $BRANCH_NAME -l sync
+          gh pr create -t "Synchronize upstream" -b "Merge $UPSTREAM_UPDATES to master" -B master -H $BRANCH_NAME
