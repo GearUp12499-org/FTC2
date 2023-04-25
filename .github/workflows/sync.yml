@@ -29,7 +29,7 @@ jobs:
           export BRANCH_NAME="latest-upstream"
           git switch -c $BRANCH_NAME || git switch $BRANCH_NAME
           git reset --hard upstream/master
-          git push --set-upstream origin $BRANCH_NAME
+          git push --set-upstream origin $BRANCH_NAME --force
           echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
       - name: create PR
         if: ${{ env.UPSTREAM_UPDATES > 0 }}
