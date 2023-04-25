@@ -22,6 +22,7 @@ jobs:
         run: |
           export UPSTREAM_UPDATES=$(git rev-list upstream/master --not HEAD --count)
           echo "There are $UPSTREAM_UPDATES updates from upstream"
+          echo "UPSTREAM_UPDATES=$UPSTREAM_UPDATES" >> "$GITHUB_ENV"
       - name: prepare
         if: ${{ env.UPSTREAM_UPDATES > 0 }}
         run: |
