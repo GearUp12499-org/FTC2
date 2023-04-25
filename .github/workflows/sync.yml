@@ -33,13 +33,5 @@ jobs:
           echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
       - name: create PR
         if: ${{ env.UPSTREAM_UPDATES > 0 }}
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Sync upstream"
-          title: "Sync upstream"
-          body: "Sync upstream"
-          branch: ${{ env.BRANCH_NAME }}
-          base: master
-          labels: |
-            sync
+        run: |
+          gh pr create -t "Synchronize upstream" -b "Merge $UPSTREAM_UPDATES to master" -B master -H $BRANCH_NAME -l sync
