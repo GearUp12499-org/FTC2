@@ -33,5 +33,7 @@ jobs:
           echo "BRANCH_NAME=$BRANCH_NAME" >> "$GITHUB_ENV"
       - name: create PR
         if: ${{ env.UPSTREAM_UPDATES > 0 }}
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr create -t "Synchronize upstream" -b "Merge $UPSTREAM_UPDATES to master" -B master -H $BRANCH_NAME -l sync
